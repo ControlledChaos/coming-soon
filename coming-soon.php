@@ -1,24 +1,24 @@
 <?php
 /**
- * The WordPress Plugin Boilerplate.
+ * The WordPress Plugin Boilerplate. < Thank you <3 the boiler plate!
  *
  * A foundation off of which to build well-documented WordPress plugins that
  * also follow WordPress Coding Standards and PHP best practices.
  *
- * @package   Plugin_Name
- * @author    Your Name <email@example.com>
+ * @package   Coming_Soon
+ * @author    John Turner <john@seedprod.com>
  * @license   GPL-2.0+
- * @link      http://example.com
- * @copyright 2013 Your Name or Company Name
+ * @link      http://www.seedprod.com
+ * @copyright 2013 SeedProd
  *
  * @wordpress-plugin
- * Plugin Name:       @TODO
- * Plugin URI:        @TODO
- * Description:       @TODO
+ * Plugin Name:       Coming Soon
+ * Plugin URI:        http://www.seedprod.com
+ * Description:       Coming Soon, Maintenance Mode & Landing Pages in minutes
  * Version:           1.0.0
- * Author:            @TODO
- * Author URI:        @TODO
- * Text Domain:       plugin-name-locale
+ * Author:            John Turner
+ * Author URI:        http://www.seedprod.com
+ * Text Domain:       seedprod-coming-soon
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
@@ -34,13 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Public-Facing Functionality
  *----------------------------------------------------------------------------*/
 
-/*
- * @TODO:
- *
- * - replace `class-plugin-name.php` with the name of the plugin's class file
- *
- */
-require_once( plugin_dir_path( __FILE__ ) . 'public/class-plugin-name.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'public/class-coming-soon.php' );
 
 /*
  * Register hooks that are fired when the plugin is activated or deactivated.
@@ -84,7 +78,7 @@ add_action( 'plugins_loaded', array( 'Plugin_Name', 'get_instance' ) );
  */
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-plugin-name-admin.php' );
-	add_action( 'plugins_loaded', array( 'Plugin_Name_Admin', 'get_instance' ) );
+	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-coming-soon-admin.php' );
+	add_action( 'plugins_loaded', array( 'Coming_Soon_Admin', 'get_instance' ) );
 
 }
