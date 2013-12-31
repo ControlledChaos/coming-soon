@@ -2,11 +2,11 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @package   Plugin_Name
- * @author    Your Name <email@example.com>
+ * @package   Coming Soon
+ * @author    John Turner <john@seedprod.com>
  * @license   GPL-2.0+
- * @link      http://example.com
- * @copyright 2013 Your Name or Company Name
+ * @link      http://www.seedprod.com
+ * @copyright 2013 SeedProd
  */
 
 // If uninstall not called from WordPress, then exit

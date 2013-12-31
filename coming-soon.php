@@ -16,7 +16,7 @@
  * Plugin URI:        http://www.seedprod.com
  * Description:       Coming Soon, Maintenance Mode & Landing Pages in minutes
  * Version:           1.0.0
- * Author:            John Turner
+ * Author:            SeedProd
  * Author URI:        http://www.seedprod.com
  * Text Domain:       seedprod-coming-soon
  * License:           GPL-2.0+
@@ -34,19 +34,14 @@ if ( ! defined( 'WPINC' ) ) {
  * Public-Facing Functionality
  *----------------------------------------------------------------------------*/
 
-require_once( plugin_dir_path( __FILE__ ) . 'public/class-coming-soon.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'public/class-seedcs.php' );
 
 /*
  * Register hooks that are fired when the plugin is activated or deactivated.
  * When the plugin is deleted, the uninstall.php file is loaded.
- *
- * @TODO:
- *
- * - replace Plugin_Name with the name of the class defined in
- *   `class-plugin-name.php`
  */
-register_activation_hook( __FILE__, array( 'Plugin_Name', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'Plugin_Name', 'deactivate' ) );
+register_activation_hook( __FILE__, array( 'SeedCS', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'SeedCS', 'deactivate' ) );
 
 /*
  * @TODO:
@@ -54,7 +49,7 @@ register_deactivation_hook( __FILE__, array( 'Plugin_Name', 'deactivate' ) );
  * - replace Plugin_Name with the name of the class defined in
  *   `class-plugin-name.php`
  */
-add_action( 'plugins_loaded', array( 'Plugin_Name', 'get_instance' ) );
+add_action( 'plugins_loaded', array( 'SeedCS', 'get_instance' ) );
 
 /*----------------------------------------------------------------------------*
  * Dashboard and Administrative Functionality
@@ -78,7 +73,7 @@ add_action( 'plugins_loaded', array( 'Plugin_Name', 'get_instance' ) );
  */
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-coming-soon-admin.php' );
-	add_action( 'plugins_loaded', array( 'Coming_Soon_Admin', 'get_instance' ) );
+	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-seedcs-admin.php' );
+	add_action( 'plugins_loaded', array( 'SeedCS_Admin', 'get_instance' ) );
 
 }

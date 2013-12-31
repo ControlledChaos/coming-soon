@@ -2,11 +2,11 @@
 /**
  * Plugin Name.
  *
- * @package   Plugin_Name
- * @author    Your Name <email@example.com>
+ * @package   Coming Soon
+ * @author    John Turner <john@seedprod.com>
  * @license   GPL-2.0+
- * @link      http://example.com
- * @copyright 2013 Your Name or Company Name
+ * @link      http://www.seedprod.com
+ * @copyright 2013 SeedProd
  */
 
 /**
@@ -21,7 +21,7 @@
  * @package Plugin_Name
  * @author  Your Name <email@example.com>
  */
-class Plugin_Name {
+class SeedCS {
 
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
