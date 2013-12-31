@@ -16,10 +16,9 @@
  * If you're interested in introducing administrative or dashboard
  * functionality, then refer to `class-plugin-name-admin.php`
  *
- * @TODO: Rename this class to a proper name for your plugin.
  *
- * @package Plugin_Name
- * @author  Your Name <email@example.com>
+ * @package   Coming Soon
+ * @author    John Turner <john@seedprod.com>
  */
 class SeedCS {
 
@@ -30,7 +29,7 @@ class SeedCS {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '4.0.0';
 
 	/**
 	 * @TODO - Rename "plugin-name" to the name your your plugin
@@ -46,7 +45,7 @@ class SeedCS {
 	 *
 	 * @var      string
 	 */
-	protected $plugin_slug = 'plugin-name';
+	protected $plugin_slug = 'coming-soon';
 
 	/**
 	 * Instance of this class.

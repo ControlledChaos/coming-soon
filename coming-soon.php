@@ -15,10 +15,10 @@
  * Plugin Name:       Coming Soon
  * Plugin URI:        http://www.seedprod.com
  * Description:       Coming Soon, Maintenance Mode & Landing Pages in minutes
- * Version:           1.0.0
+ * Version:           4.0.0
  * Author:            SeedProd
  * Author URI:        http://www.seedprod.com
- * Text Domain:       seedprod-coming-soon
+ * Text Domain:       coming-soon
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
@@ -29,6 +29,15 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+/*----------------------------------------------------------------------------*
+ * Global Functionality
+ *----------------------------------------------------------------------------*/
+
+global $seedcs_options;
+
+require_once( plugin_dir_path( __FILE__ ) . 'admin/includes/register-settings.php');
+$seedcs_options = seedcs_get_settings();
 
 /*----------------------------------------------------------------------------*
  * Public-Facing Functionality
@@ -43,12 +52,6 @@ require_once( plugin_dir_path( __FILE__ ) . 'public/class-seedcs.php' );
 register_activation_hook( __FILE__, array( 'SeedCS', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'SeedCS', 'deactivate' ) );
 
-/*
- * @TODO:
- *
- * - replace Plugin_Name with the name of the class defined in
- *   `class-plugin-name.php`
- */
 add_action( 'plugins_loaded', array( 'SeedCS', 'get_instance' ) );
 
 /*----------------------------------------------------------------------------*
@@ -74,6 +77,7 @@ add_action( 'plugins_loaded', array( 'SeedCS', 'get_instance' ) );
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 
 	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-seedcs-admin.php' );
+	require_once( plugin_dir_path( __FILE__ ) . 'admin/includes/display-settings.php');
 	add_action( 'plugins_loaded', array( 'SeedCS_Admin', 'get_instance' ) );
 
 }

@@ -131,6 +131,7 @@ class SeedCS_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
+			wp_enqueue_style( 'media-upload' );
 			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), SeedCS::VERSION );
 		}
 
@@ -155,6 +156,7 @@ class SeedCS_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
+			wp_enqueue_script( 'media-upload' );
 			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), SeedCS::VERSION );
 		}
 
@@ -197,7 +199,7 @@ class SeedCS_Admin {
 	 * @since    1.0.0
 	 */
 	public function display_plugin_admin_page() {
-		include_once( 'views/admin.php' );
+		seedcs_options_page();
 	}
 
 	/**
