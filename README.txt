@@ -1,4 +1,4 @@
-=== @TODO: Plugin Name ===
+=== Plugin Name ===
 Contributors: seedprod, johnnytee
 Donate link: http://www.seedprod.com
 Tags: comments, spam
@@ -12,8 +12,19 @@ Coming Soon, Maintenance Mode and Landing Pages in minutes.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+Create simple Coming Soon and Maintenance Mode pages. Work on your site while visitors see a "Coming Soon" or "Maintenance Mode" page.
 
+### Benefits, Features and Options:
+	
+	*   Works with any WordPress Theme
+	*   Responsive
+	*   Customize the Look and Feel
+	*   Easily add Custom CSS and HTML
+	*   Uses HTML5 &amp; CSS3
+	*   Translation Ready, i18n Support
+	*   Multisite Support
+	*   BuddyPress Support
+	* 	Uses WordPress Best Practices
 
 == Installation ==
 

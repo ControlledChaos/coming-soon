@@ -1,17 +1,5 @@
 <?php
-/**
- * The WordPress Plugin Boilerplate. < Thank you <3 the boiler plate!
- *
- * A foundation off of which to build well-documented WordPress plugins that
- * also follow WordPress Coding Standards and PHP best practices.
- *
- * @package   Coming_Soon
- * @author    John Turner <john@seedprod.com>
- * @license   GPL-2.0+
- * @link      http://www.seedprod.com
- * @copyright 2013 SeedProd
- *
- * @wordpress-plugin
+/*
  * Plugin Name:       Coming Soon
  * Plugin URI:        http://www.seedprod.com
  * Description:       Coming Soon, Maintenance Mode & Landing Pages in minutes
@@ -22,62 +10,58 @@
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/<owner>/<repo>
+ * Copyright 2012  John Turner (email : john@seedprod.com, twitter : @johnturner)
  */
 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+/**
+ * Default Constants
+ */
+define( 'SEED_CSP4_SHORTNAME', 'seed_csp4' ); // Used to reference namespace functions.
+define( 'SEED_CSP4_SLUG', 'coming-soon/coming-soon.php' ); // Used for settings link.
+define( 'SEED_CSP4_TEXTDOMAIN', 'coming-soon' ); // Your textdomain
+define( 'SEED_CSP4_PLUGIN_NAME', __( 'Coming Soon', 'coming-soon' ) ); // Plugin Name shows up on the admin settings screen.
+define( 'SEED_CSP4_VERSION', '4.0.0'); // Plugin Version Number. Recommend you use Semantic Versioning http://semver.org/
+define( 'SEED_CSP4_PLUGIN_PATH', plugin_dir_path( __FILE__ ) ); // Example output: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/seed_csp4/
+define( 'SEED_CSP4_PLUGIN_URL', plugin_dir_url( __FILE__ ) ); // Example output: http://localhost:8888/wordpress/wp-content/plugins/seed_csp4/
+define( 'SEED_CSP4_TABLENAME', 'seed_csp4_subscribers' );
+
+
+/**
+ * Load Translation
+ */
+function seed_csp4_load_textdomain() {
+    load_plugin_textdomain( 'coming-soon', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
+add_action('plugins_loaded', 'seed_csp4_load_textdomain');
 
-/*----------------------------------------------------------------------------*
- * Global Functionality
- *----------------------------------------------------------------------------*/
 
-global $seedcs_options;
-
-require_once( plugin_dir_path( __FILE__ ) . 'admin/includes/register-settings.php');
-$seedcs_options = seedcs_get_settings();
-
-/*----------------------------------------------------------------------------*
- * Public-Facing Functionality
- *----------------------------------------------------------------------------*/
-
-require_once( plugin_dir_path( __FILE__ ) . 'public/class-seedcs.php' );
-
-/*
- * Register hooks that are fired when the plugin is activated or deactivated.
- * When the plugin is deleted, the uninstall.php file is loaded.
+/**
+ * Upon activation of the plugin, see if we are running the required version and deploy theme in defined.
+ *
+ * @since 0.1.0
  */
-register_activation_hook( __FILE__, array( 'SeedCS', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'SeedCS', 'deactivate' ) );
+function seed_csp4_activation(){
+}
+//register_activation_hook( __FILE__, 'seed_csp4_activation' );
 
-add_action( 'plugins_loaded', array( 'SeedCS', 'get_instance' ) );
 
-/*----------------------------------------------------------------------------*
- * Dashboard and Administrative Functionality
- *----------------------------------------------------------------------------*/
+/***************************************************************************
+ * Load Required Files
+ ***************************************************************************/
 
-/*
- * @TODO:
- *
- * - replace `class-plugin-admin.php` with the name of the plugin's admin file
- * - replace Plugin_Name_Admin with the name of the class defined in
- *   `class-plugin-name-admin.php`
- *
- * If you want to include Ajax within the dashboard, change the following
- * conditional to:
- *
- * if ( is_admin() ) {
- *   ...
- * }
- *
- * The code below is intended to to give the lightest footprint possible.
- */
-if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+// Global
+require_once( 'inc/class-seed-csp4.php' );
+add_action( 'plugins_loaded', array( 'SEED_CSP4', 'get_instance' ) );
 
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-seedcs-admin.php' );
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/includes/display-settings.php');
-	add_action( 'plugins_loaded', array( 'SeedCS_Admin', 'get_instance' ) );
+if( is_admin() ) {
+// Admin Only
+	global $seed_csp4_options;
+	require_once( 'inc/config-settings.php' );
+	$seed_csp4_options = seed_csp4_get_options();
+	
+    require_once( 'framework/framework.php' );
+    add_action( 'plugins_loaded', array( 'SEED_CSP4_ADMIN', 'get_instance' ) );
+} else {
+// Public only
 
 }
