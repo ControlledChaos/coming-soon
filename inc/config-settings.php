@@ -136,10 +136,11 @@ function seed_csp4_get_options(){
 
 
     $seed_csp4_options[ ] = array(
-        "type" => "textbox",
+        "type" => "textarea",
         "id" => "ga_analytics",
+        "class" => "large-text",
         "label" => __( "Analytics Code", 'coming-soon' ),
-        "desc" => __('Paste in your <a href="http://www.google.com/analytics/" target="_blank">Google Analytics</a> code. Example: UA-xxxxxxxxx', 'coming-soon'),
+        "desc" => __('Paste in your Universal or Classic <a href="http://www.google.com/analytics/" target="_blank">Google Analytics</a> code.', 'coming-soon'),
     );
 
 

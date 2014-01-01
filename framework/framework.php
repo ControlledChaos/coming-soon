@@ -80,7 +80,7 @@ class SEED_CSP4_ADMIN
             //     }
             // }
             //$_POST[ $_POST[ 'option_page' ] ] = $defaults;
-            require_once(SEED_CSP4_PLUGIN_PATH.'inc/defaults.php');
+            require_once(SEED_CSP4_PLUGIN_PATH.'inc/default-settings.php');
             //var_dump($seed_csp4_settings_deafults[$_POST[ 'option_page' ]]);
             $_POST[ $_POST[ 'option_page' ] ] = $seed_csp4_settings_deafults[$_POST[ 'option_page' ]];
             add_settings_error( 'general', 'seed_csp4-settings-reset', __( "Settings reset." ), 'updated' );
@@ -173,7 +173,7 @@ class SEED_CSP4_ADMIN
         $plugin_file = SEED_CSP4_SLUG;
 
         if ( $file == $plugin_file ) {
-            $settings_link = '<a href="options-general.php?page=seed_scp4">Settings</a>';
+            $settings_link = '<a href="options-general.php?page=seed_csp4">Settings</a>';
             array_unshift( $links, $settings_link );
         }
         return $links;
