@@ -465,43 +465,48 @@ class SEED_CSP4_ADMIN
      */
     function validate_machine( $input )
     {
+        global $seed_csp4_options;
         $option_page = $_POST['option_page'];
-        foreach ( $seed_csp4_options as $k ) {
-            switch ( $k[ 'type' ] ) {
-                case 'menu':
-                case 'setting':
-                    if(isset($k['id']))
-                        $setting_id = $k['id'];
-                case 'section':
-                case 'tab';
-                    break;
-                default:
-                    if ( !empty( $k[ 'validate' ] ) && $setting_id == $option_page ) {
-                        $validation_rules = explode( ',', $k[ 'validate' ] );
+        // foreach ( $seed_csp4_options as $k ) {
+        //     switch ( $k[ 'type' ] ) {
+        //         case 'menu':
+        //         case 'setting':
+        //             if(isset($k['id']))
+        //                 $setting_id = $k['id'];
+        //         case 'section':
+        //         case 'tab';
+        //             break;
+        //         default:
+        //             if ( !empty( $k[ 'validate' ] ) && $setting_id == $option_page ) {
+        //                 $validation_rules = explode( ',', $k[ 'validate' ] );
 
-                        foreach ( $validation_rules as $v ) {
-                            $path = SEED_CSP4_PLUGIN_PATH . 'framework/validations/' . $v . '.php';
-                            if ( file_exists( $path ) ) {
-                                // Defaults Values
-                                $is_valid  = true;
-                                $error_msg = '';
+        //                 foreach ( $validation_rules as $v ) {
+        //                     $path = SEED_CSP4_PLUGIN_PATH . 'framework/validations/' . $v . '.php';
+        //                     if ( file_exists( $path ) ) {
+        //                         // Defaults Values
+        //                         $is_valid  = true;
+        //                         $error_msg = '';
 
-                                // Test Validation
-                                include( $path );
+        //                         // Test Validation
+        //                         include( $path );
                                 
-                                // Is it valid?
-                                if ( $is_valid === false ) {
-                                    add_settings_error( $k[ 'id' ], 'seedprod_error', $error_msg, 'error' );
-                                    // Unset invalids
-                                    unset( $input[ $k[ 'id' ] ] );
-                                }
+        //                         // Is it valid?
+        //                         if ( $is_valid === false ) {
+        //                             add_settings_error( $k[ 'id' ], 'seedprod_error', $error_msg, 'error' );
+        //                             // Unset invalids
+        //                             unset( $input[ $k[ 'id' ] ] );
+        //                         }
                                 
-                            }
-                        } //end foreach
+        //                     }
+        //                 } //end foreach
                         
-                    }
-            }
-        }
+        //             }
+        //     }
+        // }
+
+        $current_option = get_option('seed_csp4_settings');
+
+        $input = array_merge($current_option,$input);
         
         return $input;
     }

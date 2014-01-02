@@ -50,6 +50,11 @@ function seed_csp4_activation(){
  ***************************************************************************/
 
 // Global
+global $seed_csp4_settings;
+
+require_once( 'framework/get-settings.php' );
+$seed_csp4_settings = seed_csp4_get_settings();
+
 require_once( 'inc/class-seed-csp4.php' );
 add_action( 'plugins_loaded', array( 'SEED_CSP4', 'get_instance' ) );
 

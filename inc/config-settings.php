@@ -12,7 +12,6 @@
  */
 function seed_csp4_get_options(){
     
-    global $seed_csp4_options;
 
     /**
      * Create new menus
@@ -23,21 +22,23 @@ function seed_csp4_get_options(){
         "menu_type" => "add_options_page",
         "page_name" => __( "Coming Soon", 'coming-soon' ),
         "menu_slug" => "seed_csp4",
-        "layout" => "2-col" 
+        "layout" => "classic" 
+    );
+
+
+    $seed_csp4_options[ ] = array(
+        "type" => "tab",
+        "id" => "content",
+        "label" => __( "Content", 'coming-soon' ),
     );
 
     /**
      * Settings Tab
      */
-    $seed_csp4_options[ ] = array(
-        "type" => "tab",
-        "id" => "seed_csp4_tab_1",
-        "label" => __( "Settings", 'coming-soon' ),
-    );
 
     $seed_csp4_options[ ] = array(
         "type" => "setting",
-        "id" => "seed_csp4_settings_1",
+        "id" => "seed_csp4_settings",
     );
 
     $seed_csp4_options[ ] = array(
@@ -149,13 +150,13 @@ function seed_csp4_get_options(){
      */
     $seed_csp4_options[ ] = array(
         "type" => "tab",
-        "id" => "seed_csp4_tab_2",
+        "id" => "design",
         "label" => __( "Design", 'coming-soon' ) 
     );
 
     $seed_csp4_options[ ] = array(
         "type" => "setting",
-        "id" => "seed_csp4_settings_2" 
+        "id" => "seed_csp4_settings" 
     );
 
 
@@ -310,13 +311,13 @@ function seed_csp4_get_options(){
      */
     $seed_csp4_options[ ] = array(
         "type" => "tab",
-        "id" => "seed_csp4_tab_4",
+        "id" => "advanced",
         "label" => __( "Advanced", 'coming-soon' ) 
     );
 
     $seed_csp4_options[ ] = array(
         "type" => "setting",
-        "id" => "seed_csp4_settings_4" 
+        "id" => "seed_csp4_settings" 
     );
 
 

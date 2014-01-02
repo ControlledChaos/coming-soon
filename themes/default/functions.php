@@ -1,8 +1,8 @@
 <?php
 // Template Tags
 function seed_csp4_title(){
-	global $seed_csp4;
-	$o = seed_csp4_get_settings();
+	global $seed_csp4_settings;
+	$o = $seed_csp4_settings;
 	extract($o);
 
 	$title = '';
@@ -17,8 +17,8 @@ function seed_csp4_title(){
 
 
 function seed_csp4_metadescription(){
-	global $seed_csp4;
-	$o = seed_csp4_get_settings();
+	global $seed_csp4_settings;
+	$o = $seed_csp4_settings;
 	extract($o);
 	if(empty($seo_description)){
 		$seo_description = get_bloginfo( 'description', 'display' );
@@ -38,8 +38,8 @@ function seed_csp4_privacy(){
 }
 
 function seed_csp4_favicon(){
-	global $seed_csp4;
-	$o = seed_csp4_get_settings();
+	global $seed_csp4_settings;
+	$o = $seed_csp4_settings;
 	extract($o);
 	$output = '';
 	if(!empty($favicon)){
@@ -50,8 +50,8 @@ function seed_csp4_favicon(){
 }
 
 function seed_csp4_customcss(){
-	global $seed_csp4;
-	$o = seed_csp4_get_settings();
+	global $seed_csp4_settings;
+	$o = $seed_csp4_settings;
 	extract($o);
 	$output = '';
 	if(!empty($custom_css)){
@@ -62,8 +62,8 @@ function seed_csp4_customcss(){
 
 function seed_csp4_head(){
 	require_once(SEED_CSP4_PLUGIN_PATH.'lib/seed_csp4_lessc.inc.php');
-	global $seed_csp4;
-	$o = seed_csp4_get_settings();
+	global $seed_csp4_settings;
+	$o = $seed_csp4_settings;
 	extract($o);
 
 	$output = "";
@@ -324,7 +324,7 @@ function seed_csp4_footer(){
 	if(!empty($seed_csp4_post_result['post']) && $seed_csp4_post_result['post'] == 'true' && $seed_csp4_post_result['status'] == '200'){
 		$is_post = true;
 	}
-	$o = seed_csp4_get_settings();
+	$o = $seed_csp4_settings;
 	extract($o);
 
 	$output = '';
@@ -376,8 +376,8 @@ function seed_csp4_footer(){
 }
 
 function seed_csp4_logo(){
-	global $seed_csp4;
-	$o = seed_csp4_get_settings();
+	global $seed_csp4_settings;
+	$o = $seed_csp4_settings;
 	extract($o);
 	$output = "";
 	if(!empty($logo)){
@@ -387,10 +387,10 @@ function seed_csp4_logo(){
 }
 
 function seed_csp4_headline(){
-	global $seed_csp4,$post;
+	global $seed_csp4_settings,$post;
 
 	// get settings
-	$o = seed_csp4_get_settings();
+	$o = $seed_csp4_settings;
 	extract($o);
 	$output = "";
 	$dump = "";
@@ -411,7 +411,7 @@ function seed_csp4_headline(){
 
 function seed_csp4_description(){
 	global $seed_csp4,$post;
-	$o = seed_csp4_get_settings();
+	$o = $seed_csp4_settings;
 
 	$csp4_description = $o['description'];
 
@@ -440,8 +440,8 @@ function seed_csp4_description(){
 
 
 function seed_csp4_credit(){
-	global $seed_csp4;
-	$o = seed_csp4_get_settings();
+	global $seed_csp4_settings;
+	$o = $seed_csp4_settings;
 	extract($o);
 	$output = "";
 	
