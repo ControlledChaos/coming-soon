@@ -22,7 +22,7 @@ function seed_csp4_get_options(){
         "menu_type" => "add_options_page",
         "page_name" => __( "Coming Soon", 'coming-soon' ),
         "menu_slug" => "seed_csp4",
-        "layout" => "classic" 
+        "layout" => "2-col" 
     );
 
 

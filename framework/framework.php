@@ -120,8 +120,7 @@ class SEED_CSP4_ADMIN
      */
     function create_menus( )
     {
-        global $seed_csp4_options;
-        foreach ( $seed_csp4_options as $k => $v ) {
+        foreach ( seed_csp4_get_options() as $k => $v ) {
             if ( $v[ 'type' ] == 'menu' ) {
                 if ( empty( $v[ 'menu_name' ] ) ) {
                     $v[ 'menu_name' ] = $v[ 'page_name' ];
@@ -137,10 +136,6 @@ class SEED_CSP4_ADMIN
                 }
                 if ( empty( $v[ 'icon_url' ] ) ) {
                     $v[ 'icon_url' ] = SEED_CSP4_PLUGIN_URL . 'framework/settings-menu-icon-16x16.png';
-                }
-                if ( empty( $v[ 'menu_slug' ] ) ) {
-                    $v[ 'menu_slug' ]                 = sanitize_title( $v[ 'page_name' ] );
-                    $seed_csp4_options[ $k ][ 'menu_slug' ] = $v[ 'menu_slug' ];
                 }
                 if ( $v[ 'menu_type' ] == 'add_submenu_page' ) {
                     $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
@@ -359,12 +354,11 @@ class SEED_CSP4_ADMIN
     function create_settings( )
     {
         global $seed_csp4_options;
-        foreach ( $seed_csp4_options as $k => $v ) {
+        foreach ( seed_csp4_get_options() as $k => $v ) {
 
             switch ( $v[ 'type' ] ) {
                 case 'menu':
                     $menu_slug = $v[ 'menu_slug' ];
-
                     break;
                 case 'setting':
                     if ( empty( $v[ 'validate_function' ] ) ) {
@@ -375,7 +369,6 @@ class SEED_CSP4_ADMIN
                     }
                     register_setting( $v[ 'id' ], $v[ 'id' ], $v[ 'validate_function' ] );
                     $setting_id = $v[ 'id' ];
-                    $seed_csp4_options[ $k ][ 'menu_slug' ] = $menu_slug;
                     break;
                 case 'section':
                     if ( empty( $v[ 'desc_callback' ] ) ) {
