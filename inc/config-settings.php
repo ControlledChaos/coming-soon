@@ -10,6 +10,11 @@
 /**
  * Config Settings
  */
+
+    function hitme( )
+    {
+        //var_dump('hit');
+    }
 function seed_csp4_get_options(){
     
 
@@ -25,6 +30,11 @@ function seed_csp4_get_options(){
         "layout" => "2-col" 
     );
 
+    $seed_csp4_options[ ] = array(
+        "type" => "setting",
+        "id" => "seed_csp4_settings",
+    );
+
 
     $seed_csp4_options[ ] = array(
         "type" => "tab",
@@ -35,11 +45,6 @@ function seed_csp4_get_options(){
     /**
      * Settings Tab
      */
-
-    $seed_csp4_options[ ] = array(
-        "type" => "setting",
-        "id" => "seed_csp4_settings",
-    );
 
     $seed_csp4_options[ ] = array(
         "type" => "section",
@@ -154,11 +159,6 @@ function seed_csp4_get_options(){
         "label" => __( "Design", 'coming-soon' ) 
     );
 
-    $seed_csp4_options[ ] = array(
-        "type" => "setting",
-        "id" => "seed_csp4_settings" 
-    );
-
 
     // Background
     $seed_csp4_options[ ] = array(
@@ -189,9 +189,10 @@ function seed_csp4_get_options(){
         "id" => "bg_cover",
         "label" => __( "Responsive Background", 'coming-soon' ),
         "desc" => __("This will scale the image to the smallest size such that both its width and its height can fit inside the content area. The image will be stretched for older browsers.", 'coming-soon'),
-        "option_values" => array(
-             '1' => __( 'Yes', 'coming-soon' ),
-        ), 
+        // "option_values" => array(
+        //      '1' => __( 'Yes', 'coming-soon' ),
+        // ), 
+        "option_values" => hitme()
     );
 
     $seed_csp4_options[ ] = array(
@@ -313,11 +314,6 @@ function seed_csp4_get_options(){
         "type" => "tab",
         "id" => "advanced",
         "label" => __( "Advanced", 'coming-soon' ) 
-    );
-
-    $seed_csp4_options[ ] = array(
-        "type" => "setting",
-        "id" => "seed_csp4_settings" 
     );
 
 

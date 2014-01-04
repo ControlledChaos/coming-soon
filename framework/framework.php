@@ -21,6 +21,15 @@ class SEED_CSP4_ADMIN
      * @var      object
      */
     protected static $instance = null;
+
+    /**
+         * Slug of the plugin screen.
+         *
+         * @since    1.0.0
+         *
+         * @var      string
+         */
+    protected $plugin_screen_hook_suffix = null;
     
     
     /**
@@ -60,7 +69,7 @@ class SEED_CSP4_ADMIN
      */
     function reset_defaults( )
     {
-        if ( isset( $_POST[ 'reset' ] ) ) {
+        if ( isset( $_POST[ 'seed_csp4_reset' ] ) ) {
             $option_page = $_POST[ 'option_page' ];
             check_admin_referer( $option_page . '-options' );
             //$defaults = array( );
@@ -97,7 +106,7 @@ class SEED_CSP4_ADMIN
      */
     function admin_enqueue_scripts( $hook_suffix )
     {
-        if ( !in_array( $hook_suffix, $this->pages ) )
+        if ( $hook_suffix != $this->plugin_screen_hook_suffix )
             return;
         
         wp_enqueue_script( 'media-upload' );
@@ -120,44 +129,51 @@ class SEED_CSP4_ADMIN
      */
     function create_menus( )
     {
-        foreach ( seed_csp4_get_options() as $k => $v ) {
-            if ( $v[ 'type' ] == 'menu' ) {
-                if ( empty( $v[ 'menu_name' ] ) ) {
-                    $v[ 'menu_name' ] = $v[ 'page_name' ];
-                }
-                if ( empty( $v[ 'capability' ] ) ) {
-                    $v[ 'capability' ] = 'manage_options';
-                }
-                if ( empty( $v[ 'callback' ] ) ) {
-                    $v[ 'callback' ] = array(
-                        &$this,
-                        'option_page' 
-                    );
-                }
-                if ( empty( $v[ 'icon_url' ] ) ) {
-                    $v[ 'icon_url' ] = SEED_CSP4_PLUGIN_URL . 'framework/settings-menu-icon-16x16.png';
-                }
-                if ( $v[ 'menu_type' ] == 'add_submenu_page' ) {
-                    $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
-                        $v[ 'parent_slug' ],
-                        $v[ 'page_name' ],
-                        $v[ 'menu_name' ],
-                        $v[ 'capability' ],
-                        $v[ 'menu_slug' ],
-                        $v[ 'callback' ] 
-                    ) );
-                } else {
-                    $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
-                        $v[ 'page_name' ],
-                        $v[ 'menu_name' ],
-                        $v[ 'capability' ],
-                        $v[ 'menu_slug' ],
-                        $v[ 'callback' ],
-                        $v[ 'icon_url' ] 
-                    ) );
-                }
-            }
-        }
+        $this->plugin_screen_hook_suffix = add_options_page( 
+            __( "Coming Soon", 'coming-soon' ), 
+            __( "Coming Soon", 'coming-soon' ), 
+            'manage_options', 
+            'seed_csp4', 
+            array( &$this , 'option_page' )
+            );
+        // foreach ( seed_csp4_get_options() as $k => $v ) {
+        //     if ( $v[ 'type' ] == 'menu' ) {
+        //         if ( empty( $v[ 'menu_name' ] ) ) {
+        //             $v[ 'menu_name' ] = $v[ 'page_name' ];
+        //         }
+        //         if ( empty( $v[ 'capability' ] ) ) {
+        //             $v[ 'capability' ] = 'manage_options';
+        //         }
+        //         if ( empty( $v[ 'callback' ] ) ) {
+        //             $v[ 'callback' ] = array(
+        //                 &$this,
+        //                 'option_page' 
+        //             );
+        //         }
+        //         if ( empty( $v[ 'icon_url' ] ) ) {
+        //             $v[ 'icon_url' ] = SEED_CSP4_PLUGIN_URL . 'framework/settings-menu-icon-16x16.png';
+        //         }
+        //         if ( $v[ 'menu_type' ] == 'add_submenu_page' ) {
+        //             $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
+        //                 $v[ 'parent_slug' ],
+        //                 $v[ 'page_name' ],
+        //                 $v[ 'menu_name' ],
+        //                 $v[ 'capability' ],
+        //                 $v[ 'menu_slug' ],
+        //                 $v[ 'callback' ] 
+        //             ) );
+        //         } else {
+        //             $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
+        //                 $v[ 'page_name' ],
+        //                 $v[ 'menu_name' ],
+        //                 $v[ 'capability' ],
+        //                 $v[ 'menu_slug' ],
+        //                 $v[ 'callback' ],
+        //                 $v[ 'icon_url' ] 
+        //             ) );
+        //         }
+        //     }
+        // }
     }
     
     /**
@@ -271,7 +287,7 @@ class SEED_CSP4_ADMIN
                     <p>
                     <!-- <input name="submit" type="submit" value="<?php _e( 'Save All Changes', 'coming-soon' ); ?>" class="button-primary"/> -->
                     <?php if(!empty($_GET['tab']) && $_GET['tab'] != 'seed_csp4_tab_3') { ?>
-                    <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
+                    <input id="reset" name="seed_csp4_reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
                     <?php } ?>
                     </p>
                             <?php
@@ -280,8 +296,6 @@ class SEED_CSP4_ADMIN
                                 if ( isset( $v[ 'menu_slug' ] ) ) {
                                     if ( $v[ 'menu_slug' ] == $page ) {
                                         switch ( $v[ 'type' ] ) {
-                                            case 'menu';
-                                                break;
                                             case 'tab';
                                                 $tab = $v;
                                                 if ( empty( $default_tab ) )
@@ -317,7 +331,7 @@ class SEED_CSP4_ADMIN
                     <?php if($show_submit): ?>
                     <p>
                     <!-- <input name="submit" type="submit" value="<?php _e( 'Save All Changes', 'coming-soon' ); ?>" class="button-primary"/> -->
-                    <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
+                    <input id="reset" name="seed_csp4_reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
                     </p>
                     <?php endif; ?>
                     </form> 
@@ -353,6 +367,10 @@ class SEED_CSP4_ADMIN
      */
     function create_settings( )
     {
+        //return if not our page
+        if($_GET['page'] != 'seed_csp4')
+            return false;
+
         global $seed_csp4_options;
         foreach ( seed_csp4_get_options() as $k => $v ) {
 

@@ -41,8 +41,9 @@ add_action('plugins_loaded', 'seed_csp4_load_textdomain');
  * @since 0.1.0
  */
 function seed_csp4_activation(){
+	//@todo set defaults
 }
-//register_activation_hook( __FILE__, 'seed_csp4_activation' );
+register_activation_hook( __FILE__, 'seed_csp4_activation' );
 
 
 /***************************************************************************
