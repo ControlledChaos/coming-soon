@@ -61,7 +61,7 @@ function seed_csp4_customcss(){
 }
 
 function seed_csp4_head(){
-	require_once(SEED_CSP4_PLUGIN_PATH.'lib/seed_csp4_lessc.inc.php');
+	require_once(SEED_CSP4_PLUGIN_PATH.'libraries/seed_csp4_lessc.inc.php');
 	global $seed_csp4_settings;
 	$o = $seed_csp4_settings;
 	extract($o);
@@ -69,13 +69,13 @@ function seed_csp4_head(){
 	$output = "";
 
 	$output .= "<!-- Bootstrap and default Style -->\n";
-	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/css/bootstrap.min.css">'."\n";
+	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/bootstrap/css/bootstrap.min.css">'."\n";
 	if(!empty($enable_responsiveness)){
-	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/css/bootstrap-responsive.min.css">'."\n";
+	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/bootstrap/css/bootstrap-responsive.min.css">'."\n";
 	}
-	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/style.css">'."\n";
+	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/style.css">'."\n";
 	if(is_rtl()){
-		$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/rtl.css">'."\n";
+		$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/rtl.css">'."\n";
 	}
 	$output .= '<style type="text/css">'."\n";
 	$output .= '/* calculated styles */'."\n";
@@ -275,13 +275,13 @@ function seed_csp4_head(){
 	if(empty($enable_wp_head_footer)){
 	$output .= '<script src="'.$include_url.'js/jquery/jquery.js"></script>'."\n";
 	}
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/js/bootstrap.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/bootstrap/js/bootstrap.js"></script>'."\n";
 
 	if(!empty($enable_fitvidjs)){		
 		$output .= "<!-- FitVid -->\n";
-		$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/jquery.fitvids.js"></script>'."\n";
+		$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/jquery.fitvids.js"></script>'."\n";
 	}
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/script.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/script.js"></script>'."\n";
 
 
 
@@ -312,7 +312,7 @@ function seed_csp4_head(){
 
 
   	$output .= "<!-- Modernizr -->\n";
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/modernizr.min.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/modernizr.min.js"></script>'."\n";
 
 
 	return $output;
@@ -331,7 +331,7 @@ function seed_csp4_footer(){
 
 	$output .= "<!-- Belatedpng -->\n";
 	$output .= "<!--[if lt IE 7 ]>\n";
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/dd_belatedpng.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/dd_belatedpng.js"></script>'."\n";
 	$output .= "<script>DD_belatedPNG.fix('img, .png_bg');</script>\n";
 	$output .= "<![endif]-->\n";
 

@@ -90,7 +90,7 @@ class SEED_CSP4{
      * Display the default template
      */
     function get_default_template(){
-        $file = file_get_contents(SEED_CSP4_PLUGIN_PATH.'/themes/default/index.php');
+        $file = file_get_contents(SEED_CSP4_PLUGIN_PATH.'/templates/default/index.php');
         return $file;
     }
 
@@ -98,7 +98,7 @@ class SEED_CSP4{
      * Load scripts
      */
     function add_scripts($hook) {
-        wp_enqueue_style( 'seed-csp4-adminbar-notification', SEED_CSP4_PLUGIN_URL.'inc/adminbar-style.css', false, SEED_CSP4_VERSION, 'screen');
+        wp_enqueue_style( 'seed-csp4-adminbar-notification', SEED_CSP4_PLUGIN_URL.'includes/adminbar-style.css', false, SEED_CSP4_VERSION, 'screen');
     }
 
     /**
@@ -153,7 +153,7 @@ class SEED_CSP4{
         // render template tags
         
         $template = $this->get_default_template();
-        require_once( SEED_CSP4_PLUGIN_PATH.'/themes/default/functions.php' );
+        require_once( SEED_CSP4_PLUGIN_PATH.'/templates/default/functions.php' );
         $template_tags = array(
             '{Title}' => seed_csp4_title(),
             '{MetaDescription}' => seed_csp4_metadescription(),

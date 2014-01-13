@@ -89,7 +89,7 @@ class SEED_CSP4_ADMIN
             //     }
             // }
             //$_POST[ $_POST[ 'option_page' ] ] = $defaults;
-            require_once(SEED_CSP4_PLUGIN_PATH.'inc/default-settings.php');
+            require_once(SEED_CSP4_PLUGIN_PATH.'includes/default-settings.php');
             //var_dump($seed_csp4_settings_deafults[$_POST[ 'option_page' ]]);
             $_POST[ $_POST[ 'option_page' ] ] = $seed_csp4_settings_deafults[$_POST[ 'option_page' ]];
             add_settings_error( 'general', 'seed_csp4-settings-reset', __( "Settings reset." ), 'updated' );
