@@ -189,10 +189,9 @@ function seed_csp4_get_options(){
         "id" => "bg_cover",
         "label" => __( "Responsive Background", 'coming-soon' ),
         "desc" => __("This will scale the image to the smallest size such that both its width and its height can fit inside the content area. The image will be stretched for older browsers.", 'coming-soon'),
-        // "option_values" => array(
-        //      '1' => __( 'Yes', 'coming-soon' ),
-        // ), 
-        "option_values" => hitme()
+        "option_values" => array(
+             '1' => __( 'Yes', 'coming-soon' ),
+        ), 
     );
 
     $seed_csp4_options[ ] = array(
