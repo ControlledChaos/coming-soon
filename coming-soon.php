@@ -56,13 +56,13 @@ global $seed_csp4_settings;
 require_once( 'framework/get-settings.php' );
 $seed_csp4_settings = seed_csp4_get_settings();
 
-require_once( 'inc/class-seed-csp4.php' );
+require_once( 'includes/class-seed-csp4.php' );
 add_action( 'plugins_loaded', array( 'SEED_CSP4', 'get_instance' ) );
 
 if( is_admin() ) {
 // Admin Only
 	global $seed_csp4_options;
-	require_once( 'inc/config-settings.php' );
+	require_once( 'includes/config-settings.php' );
 	$seed_csp4_options = seed_csp4_get_options();
 	
     require_once( 'framework/framework.php' );
