@@ -16,4 +16,4 @@ foreach ( $option_values as $k => $v ) {
     	echo "<option value='$k' " . selected( $options[ $id ], $k, false ) . ">$v</option>";
 	}
 }
-echo "</select>";
+echo "</select> ";

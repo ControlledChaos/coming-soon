@@ -1,10 +1,4 @@
 // This is place for js you need to execute on the settings page. This file will only load on the menu pages you've define in the config file.
-//  #seed_csp4_section_1_11 - FeedBurner 
-//  #seed_csp4_section_1_13 - Aweber 
-//  #seed_csp4_section_1_14 - Campagin Monitor 
-//  #seed_csp4_section_1_15 - Constant Contact 
-//  #seed_csp4_section_1_16 - Gravity Forms 
-//  #seed_csp4_section_1_17 - MailChimp 
 
 jQuery(document).ready(function($){
 

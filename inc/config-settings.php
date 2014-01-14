@@ -30,17 +30,17 @@ function seed_csp4_get_options(){
     $seed_csp4_options[ ] = array(
         "type" => "tab",
         "id" => "seed_csp4_setting",
-        "label" => __( "Settings", 'coming-soon' ),
+        "label" => __( "Content", 'coming-soon' ),
     );
 
     $seed_csp4_options[ ] = array(
         "type" => "setting",
-        "id" => "seed_csp4_settings",
+        "id" => "seed_csp4_settings_content",
     );
 
     $seed_csp4_options[ ] = array(
         "type" => "section",
-        "id" => "seed_csp4_section_1_1",
+        "id" => "seed_csp4_section_general",
         "label" => __( "General", 'coming-soon' ),
     );
 
@@ -75,7 +75,7 @@ function seed_csp4_get_options(){
     // Page Setttings
     $seed_csp4_options[ ] = array(
         "type" => "section",
-        "id" => "seed_csp4_section_1_2",
+        "id" => "seed_csp4_section_page_settings",
         "label" => __( "Page Settings", 'coming-soon' ) 
     );
 
@@ -91,7 +91,7 @@ function seed_csp4_get_options(){
         "id" => "headline",
         "class" => "large-text",
         "label" => __( "Headline", 'coming-soon' ),
-        "desc" => __( "Enter a headline for your page. Replace the default headline if it exists.", 'coming-soon' ), 
+        "desc" => __( "Enter a headline for your page.", 'coming-soon' ), 
     );
 
     $seed_csp4_options[ ] = array(
@@ -106,7 +106,7 @@ function seed_csp4_get_options(){
     // Header
     $seed_csp4_options[ ] = array(
         "type" => "section",
-        "id" => "seed_csp4_section_1_8",
+        "id" => "seed_csp4_section_header",
         "label" => __( "Header", 'coming-soon' ) 
     );
 
@@ -121,14 +121,12 @@ function seed_csp4_get_options(){
         "type" => "textbox",
         "id" => "seo_title",
         "label" => __( "SEO Title", 'coming-soon' ),
-        "desc" => __('If left empty the <a href="http://www.seomoz.org/learn-seo/title-tag" target="_blank">title tag</a> of your page will be: ', 'coming-soon').get_bloginfo( 'description', 'display' ).' - '.get_bloginfo('name','Display'), 
     );
 
     $seed_csp4_options[ ] = array(
         "type" => "textarea",
         "id" => "seo_description",
         "label" => __( "SEO Meta Description", 'coming-soon' ),
-        "desc" => __('If left empty the <a href="http://www.seomoz.org/learn-seo/meta-description" target="_blank">meta description</a> of your page will be: ', 'coming-soon').get_bloginfo( 'description', 'display' ),
         "class" => "large-text" 
     );
 
@@ -153,14 +151,14 @@ function seed_csp4_get_options(){
 
     $seed_csp4_options[ ] = array(
         "type" => "setting",
-        "id" => "seed_csp4_settings" 
+        "id" => "seed_csp4_settings_design" 
     );
 
 
     // Background
     $seed_csp4_options[ ] = array(
         "type" => "section",
-        "id" => "seed_csp4_section_2_1",
+        "id" => "seed_csp4_section_background",
         "label" => __( "Background", 'coming-soon' ) 
     );
 
@@ -185,7 +183,7 @@ function seed_csp4_get_options(){
         "type" => "checkbox",
         "id" => "bg_cover",
         "label" => __( "Responsive Background", 'coming-soon' ),
-        "desc" => __("This will scale the image to the smallest size such that both its width and its height can fit inside the content area. The image will be stretched for older browsers.", 'coming-soon'),
+        "desc" => __("Scale the background image to be as large as possible so that the background area is completely covered by the background image. Some parts of the background image may not be in view within the background positioning area.", 'coming-soon'),
         "option_values" => array(
              '1' => __( 'Yes', 'coming-soon' ),
         ), 
@@ -194,6 +192,7 @@ function seed_csp4_get_options(){
     $seed_csp4_options[ ] = array(
         "type" => "select",
         "id" => "bg_repeat",
+        "desc" => __('This setting is not applied if Responsive Background is checked', 'coming-soon' ),
         "label" => __( "Background Repeat", 'coming-soon' ),
         "option_values" => array(
             'no-repeat' => __( 'No-Repeat', 'coming-soon' ),
@@ -207,6 +206,7 @@ function seed_csp4_get_options(){
     $seed_csp4_options[ ] = array(
         "type" => "select",
         "id" => "bg_position",
+        "desc" => __('This setting is not applied if Responsive Background is checked', 'coming-soon' ),
         "label" => __( "Background Position", 'coming-soon' ),
         "option_values" => array(
             'left top' => __( 'Left Top', 'coming-soon' ),
@@ -224,6 +224,7 @@ function seed_csp4_get_options(){
     $seed_csp4_options[ ] = array(
         "type" => "select",
         "id" => "bg_attahcment",
+        "desc" => __('This setting is not applied if Responsive Background is checked', 'coming-soon' ),
         "label" => __( "Background Attachment", 'coming-soon' ),
         "option_values" => array(
             'fixed' => __( 'Fixed', 'coming-soon' ),
@@ -235,7 +236,7 @@ function seed_csp4_get_options(){
     // Text
     $seed_csp4_options[ ] = array(
         "type" => "section",
-        "id" => "seed_csp4_section_2_2",
+        "id" => "seed_csp4_section_text",
         "label" => __( "Text", 'coming-soon' ) 
     );
 
@@ -283,14 +284,13 @@ function seed_csp4_get_options(){
             '_trebuchet' => 'Trebuchet',
             '_verdana'   => 'Verdana',),
             ) ),
-        //"desc" => __( "If you do not choose a text font then fefault font will be used.", 'coming-soon' ),
     );
 
 
     // Template
     $seed_csp4_options[ ] = array(
         "type" => "section",
-        "id" => "seed_csp4_section_2_9",
+        "id" => "seed_csp4_section_template",
         "label" => __( "Template", 'coming-soon' ) 
     );
 
@@ -298,7 +298,7 @@ function seed_csp4_get_options(){
     $seed_csp4_options[ ] = array(
         "type" => "textarea",
         "id" => "custom_css",
-        "class" => "all-options",
+        "class" => "large-text",
         "label" => __( "Custom CSS", 'coming-soon' ),
         "desc" => __('Need to tweaks the styles? Add your custom CSS here.','coming-soon'),
     );
@@ -314,14 +314,14 @@ function seed_csp4_get_options(){
 
     $seed_csp4_options[ ] = array(
         "type" => "setting",
-        "id" => "seed_csp4_settings" 
+        "id" => "seed_csp4_settings_advanced" 
     );
 
 
     // Scripts
     $seed_csp4_options[ ] = array(
         "type" => "section",
-        "id" => "seed_csp4_section_4_3",
+        "id" => "seed_csp4_section_scripts",
         "label" => __( "Scripts", 'coming-soon' ) 
     );
 

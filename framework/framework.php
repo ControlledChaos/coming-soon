@@ -455,11 +455,6 @@ class SEED_CSP4_ADMIN
                     }
             }
         }
-
-        $current_option = get_option('seed_csp4_settings');
-
-        if(!empty($current_option))
-            $input = array_merge($current_option,$input);
         
         return $input;
     }

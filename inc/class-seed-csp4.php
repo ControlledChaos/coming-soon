@@ -68,8 +68,8 @@ class SEED_CSP4{
      * Display admin bar when active
      */
     function admin_bar_menu($str){
-        global $wp_admin_bar;
-        extract(seed_csp4_get_settings());
+        global $seed_csp4_settings,$wp_admin_bar;
+        extract($seed_csp4_settings);
         $msg = '';
         if($status == '1'){
         	$msg = __('Coming Soon Mode Active','coming-soon');
