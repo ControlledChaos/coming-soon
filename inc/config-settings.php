@@ -261,7 +261,7 @@ function seed_csp4_get_options(){
         "id" => "headline_color",
         "label" => __( "Headline Color", 'coming-soon' ),
         "validate" => 'color',
-        "desc" => __('If no Headline Color is chosen then the Link &amp; Button Color will be used. ','coming-soon'),
+        "desc" => __('If no Headline Color is chosen then the Link Color will be used. ','coming-soon'),
     );
 
 
@@ -271,7 +271,6 @@ function seed_csp4_get_options(){
         "id" => "text_font",
         "label" => __( "Text Font", 'coming-soon' ),
         "option_values" => apply_filters('seed_csp4_fonts',array(
-            'Default Fonts' =>array(
             '_arial'     => 'Arial',
             '_arial_black' =>'Arial Black',
             '_georgia'   => 'Georgia',
@@ -282,8 +281,8 @@ function seed_csp4_get_options(){
             '_tahoma'    => 'Tahoma',
             '_times'     => 'Times New Roman',
             '_trebuchet' => 'Trebuchet',
-            '_verdana'   => 'Verdana',),
-            ) ),
+            '_verdana'   => 'Verdana',
+            )),
     );
 
 

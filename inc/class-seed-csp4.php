@@ -101,6 +101,33 @@ class SEED_CSP4{
         wp_enqueue_style( 'seed-csp4-adminbar-notification', SEED_CSP4_PLUGIN_URL.'inc/adminbar-style.css', false, SEED_CSP4_VERSION, 'screen');
     }
 
+     /**
+     * Get Font Family
+     */
+    function get_font_family($font){
+        $fonts                    = array();
+        $fonts['_arial']          = 'Helvetica, Arial, sans-serif';
+        $fonts['_arial_black']    = 'Arial Black, Arial Black, Gadget, sans-serif';
+        $fonts['_georgia']        = 'Georgia,serif';
+        $fonts['_helvetica_neue'] = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+        $fonts['_impact']         = 'Charcoal,Impact,sans-serif';
+        $fonts['_lucida']         = 'Lucida Grande,Lucida Sans Unicode, sans-serif';
+        $fonts['_palatino']       = 'Palatino,Palatino Linotype, Book Antiqua, serif';
+        $fonts['_tahoma']         = 'Geneva,Tahoma,sans-serif';
+        $fonts['_times']          = 'Times,Times New Roman, serif';
+        $fonts['_trebuchet']      = 'Trebuchet MS, sans-serif';
+        $fonts['_verdana']        = 'Verdana, Geneva, sans-serif';
+
+        if(!empty($fonts[$font])){
+            $font_family = $fonts[$font];
+        }else{
+            $font_family = 'Helvetica Neue, Arial, sans-serif';
+        }
+            
+        echo $font_family;
+    }
+
+
     /**
      * Display the coming soon page
      */
