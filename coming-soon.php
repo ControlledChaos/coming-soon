@@ -2,7 +2,7 @@
 /*
  * Plugin Name:       Coming Soon
  * Plugin URI:        http://www.seedprod.com
- * Description:       Coming Soon, Maintenance Mode & Landing Pages in minutes
+ * Description:       Coming Soon, Maintenance Mode pages in minutes
  * Version:           4.0.0
  * Author:            SeedProd
  * Author URI:        http://www.seedprod.com
@@ -61,10 +61,7 @@ add_action( 'plugins_loaded', array( 'SEED_CSP4', 'get_instance' ) );
 
 if( is_admin() ) {
 // Admin Only
-	global $seed_csp4_options;
 	require_once( 'inc/config-settings.php' );
-	$seed_csp4_options = seed_csp4_get_options();
-	
     require_once( 'framework/framework.php' );
     add_action( 'plugins_loaded', array( 'SEED_CSP4_ADMIN', 'get_instance' ) );
 } else {

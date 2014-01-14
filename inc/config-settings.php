@@ -11,8 +11,6 @@
  * Config Settings
  */
 function seed_csp4_get_options(){
-    
-    global $seed_csp4_options;
 
     /**
      * Create new menus
