@@ -19,7 +19,7 @@ class SEED_CSP4{
 
 			extract(seed_csp4_get_settings());
 
-            // Actions & Filters
+            // Actions & Filters if the landing page is active or being previewed
             if(((!empty($status) && $status === '1') || (!empty($status) && $status === '2')) || (isset($_GET['cs_preview']) && $_GET['cs_preview'] == 'true')){
             	if(function_exists('bp_is_active')){
                     add_action( 'template_redirect', array(&$this,'render_comingsoon_page'),9);
@@ -29,7 +29,7 @@ class SEED_CSP4{
                 add_action( 'admin_bar_menu',array( &$this, 'admin_bar_menu' ), 1000 );
             }
 
-            // Add scripts
+            // Add this script globally so we can view the notification across the admin area
             add_action( 'admin_enqueue_scripts', array(&$this,'add_scripts') );            
     }
 
@@ -90,7 +90,7 @@ class SEED_CSP4{
      * Display the default template
      */
     function get_default_template(){
-        $file = file_get_contents(SEED_CSP4_PLUGIN_PATH.'/templates/default/index.php');
+        $file = file_get_contents(SEED_CSP4_PLUGIN_PATH.'/themes/default/index.php');
         return $file;
     }
 
@@ -98,7 +98,7 @@ class SEED_CSP4{
      * Load scripts
      */
     function add_scripts($hook) {
-        wp_enqueue_style( 'seed-csp4-adminbar-notification', SEED_CSP4_PLUGIN_URL.'includes/adminbar-style.css', false, SEED_CSP4_VERSION, 'screen');
+        wp_enqueue_style( 'seed-csp4-adminbar-notification', SEED_CSP4_PLUGIN_URL.'inc/adminbar-style.css', false, SEED_CSP4_VERSION, 'screen');
     }
 
     /**
@@ -153,7 +153,7 @@ class SEED_CSP4{
         // render template tags
         
         $template = $this->get_default_template();
-        require_once( SEED_CSP4_PLUGIN_PATH.'/templates/default/functions.php' );
+        require_once( SEED_CSP4_PLUGIN_PATH.'/themes/default/functions.php' );
         $template_tags = array(
             '{Title}' => seed_csp4_title(),
             '{MetaDescription}' => seed_csp4_metadescription(),
@@ -172,9 +172,8 @@ class SEED_CSP4{
         
     }
 
-    function get_font_family(){
-        return false;
-    }
-
-
 }
+
+
+
+

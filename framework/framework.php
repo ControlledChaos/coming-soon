@@ -21,15 +21,6 @@ class SEED_CSP4_ADMIN
      * @var      object
      */
     protected static $instance = null;
-
-    /**
-         * Slug of the plugin screen.
-         *
-         * @since    1.0.0
-         *
-         * @var      string
-         */
-    protected $plugin_screen_hook_suffix = null;
     
     
     /**
@@ -69,7 +60,7 @@ class SEED_CSP4_ADMIN
      */
     function reset_defaults( )
     {
-        if ( isset( $_POST[ 'seed_csp4_reset' ] ) ) {
+        if ( isset( $_POST[ 'reset' ] ) ) {
             $option_page = $_POST[ 'option_page' ];
             check_admin_referer( $option_page . '-options' );
             //$defaults = array( );
@@ -89,7 +80,7 @@ class SEED_CSP4_ADMIN
             //     }
             // }
             //$_POST[ $_POST[ 'option_page' ] ] = $defaults;
-            require_once(SEED_CSP4_PLUGIN_PATH.'includes/default-settings.php');
+            require_once(SEED_CSP4_PLUGIN_PATH.'inc/default-settings.php');
             //var_dump($seed_csp4_settings_deafults[$_POST[ 'option_page' ]]);
             $_POST[ $_POST[ 'option_page' ] ] = $seed_csp4_settings_deafults[$_POST[ 'option_page' ]];
             add_settings_error( 'general', 'seed_csp4-settings-reset', __( "Settings reset." ), 'updated' );
@@ -106,7 +97,7 @@ class SEED_CSP4_ADMIN
      */
     function admin_enqueue_scripts( $hook_suffix )
     {
-        if ( $hook_suffix != $this->plugin_screen_hook_suffix )
+        if ( !in_array( $hook_suffix, $this->pages ) )
             return;
         
         wp_enqueue_script( 'media-upload' );
@@ -129,51 +120,49 @@ class SEED_CSP4_ADMIN
      */
     function create_menus( )
     {
-        $this->plugin_screen_hook_suffix = add_options_page( 
-            __( "Coming Soon", 'coming-soon' ), 
-            __( "Coming Soon", 'coming-soon' ), 
-            'manage_options', 
-            'seed_csp4', 
-            array( &$this , 'option_page' )
-            );
-        // foreach ( seed_csp4_get_options() as $k => $v ) {
-        //     if ( $v[ 'type' ] == 'menu' ) {
-        //         if ( empty( $v[ 'menu_name' ] ) ) {
-        //             $v[ 'menu_name' ] = $v[ 'page_name' ];
-        //         }
-        //         if ( empty( $v[ 'capability' ] ) ) {
-        //             $v[ 'capability' ] = 'manage_options';
-        //         }
-        //         if ( empty( $v[ 'callback' ] ) ) {
-        //             $v[ 'callback' ] = array(
-        //                 &$this,
-        //                 'option_page' 
-        //             );
-        //         }
-        //         if ( empty( $v[ 'icon_url' ] ) ) {
-        //             $v[ 'icon_url' ] = SEED_CSP4_PLUGIN_URL . 'framework/settings-menu-icon-16x16.png';
-        //         }
-        //         if ( $v[ 'menu_type' ] == 'add_submenu_page' ) {
-        //             $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
-        //                 $v[ 'parent_slug' ],
-        //                 $v[ 'page_name' ],
-        //                 $v[ 'menu_name' ],
-        //                 $v[ 'capability' ],
-        //                 $v[ 'menu_slug' ],
-        //                 $v[ 'callback' ] 
-        //             ) );
-        //         } else {
-        //             $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
-        //                 $v[ 'page_name' ],
-        //                 $v[ 'menu_name' ],
-        //                 $v[ 'capability' ],
-        //                 $v[ 'menu_slug' ],
-        //                 $v[ 'callback' ],
-        //                 $v[ 'icon_url' ] 
-        //             ) );
-        //         }
-        //     }
-        // }
+        global $seed_csp4_options;
+        foreach ( $seed_csp4_options as $k => $v ) {
+            if ( $v[ 'type' ] == 'menu' ) {
+                if ( empty( $v[ 'menu_name' ] ) ) {
+                    $v[ 'menu_name' ] = $v[ 'page_name' ];
+                }
+                if ( empty( $v[ 'capability' ] ) ) {
+                    $v[ 'capability' ] = 'manage_options';
+                }
+                if ( empty( $v[ 'callback' ] ) ) {
+                    $v[ 'callback' ] = array(
+                        &$this,
+                        'option_page' 
+                    );
+                }
+                if ( empty( $v[ 'icon_url' ] ) ) {
+                    $v[ 'icon_url' ] = SEED_CSP4_PLUGIN_URL . 'framework/settings-menu-icon-16x16.png';
+                }
+                if ( empty( $v[ 'menu_slug' ] ) ) {
+                    $v[ 'menu_slug' ]                 = sanitize_title( $v[ 'page_name' ] );
+                    $seed_csp4_options[ $k ][ 'menu_slug' ] = $v[ 'menu_slug' ];
+                }
+                if ( $v[ 'menu_type' ] == 'add_submenu_page' ) {
+                    $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
+                        $v[ 'parent_slug' ],
+                        $v[ 'page_name' ],
+                        $v[ 'menu_name' ],
+                        $v[ 'capability' ],
+                        $v[ 'menu_slug' ],
+                        $v[ 'callback' ] 
+                    ) );
+                } else {
+                    $this->pages[ ] = call_user_func_array( $v[ 'menu_type' ], array(
+                        $v[ 'page_name' ],
+                        $v[ 'menu_name' ],
+                        $v[ 'capability' ],
+                        $v[ 'menu_slug' ],
+                        $v[ 'callback' ],
+                        $v[ 'icon_url' ] 
+                    ) );
+                }
+            }
+        }
     }
     
     /**
@@ -287,7 +276,7 @@ class SEED_CSP4_ADMIN
                     <p>
                     <!-- <input name="submit" type="submit" value="<?php _e( 'Save All Changes', 'coming-soon' ); ?>" class="button-primary"/> -->
                     <?php if(!empty($_GET['tab']) && $_GET['tab'] != 'seed_csp4_tab_3') { ?>
-                    <input id="reset" name="seed_csp4_reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
+                    <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
                     <?php } ?>
                     </p>
                             <?php
@@ -296,6 +285,8 @@ class SEED_CSP4_ADMIN
                                 if ( isset( $v[ 'menu_slug' ] ) ) {
                                     if ( $v[ 'menu_slug' ] == $page ) {
                                         switch ( $v[ 'type' ] ) {
+                                            case 'menu';
+                                                break;
                                             case 'tab';
                                                 $tab = $v;
                                                 if ( empty( $default_tab ) )
@@ -331,7 +322,7 @@ class SEED_CSP4_ADMIN
                     <?php if($show_submit): ?>
                     <p>
                     <!-- <input name="submit" type="submit" value="<?php _e( 'Save All Changes', 'coming-soon' ); ?>" class="button-primary"/> -->
-                    <input id="reset" name="seed_csp4_reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
+                    <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
                     </p>
                     <?php endif; ?>
                     </form> 
@@ -367,16 +358,13 @@ class SEED_CSP4_ADMIN
      */
     function create_settings( )
     {
-        //return if not our page
-        if($_GET['page'] != 'seed_csp4')
-            return false;
-
         global $seed_csp4_options;
-        foreach ( seed_csp4_get_options() as $k => $v ) {
+        foreach ( $seed_csp4_options as $k => $v ) {
 
             switch ( $v[ 'type' ] ) {
                 case 'menu':
                     $menu_slug = $v[ 'menu_slug' ];
+
                     break;
                 case 'setting':
                     if ( empty( $v[ 'validate_function' ] ) ) {
@@ -387,6 +375,7 @@ class SEED_CSP4_ADMIN
                     }
                     register_setting( $v[ 'id' ], $v[ 'id' ], $v[ 'validate_function' ] );
                     $setting_id = $v[ 'id' ];
+                    $seed_csp4_options[ $k ][ 'menu_slug' ] = $menu_slug;
                     break;
                 case 'section':
                     if ( empty( $v[ 'desc_callback' ] ) ) {
@@ -476,48 +465,43 @@ class SEED_CSP4_ADMIN
      */
     function validate_machine( $input )
     {
-        global $seed_csp4_options;
         $option_page = $_POST['option_page'];
-        // foreach ( $seed_csp4_options as $k ) {
-        //     switch ( $k[ 'type' ] ) {
-        //         case 'menu':
-        //         case 'setting':
-        //             if(isset($k['id']))
-        //                 $setting_id = $k['id'];
-        //         case 'section':
-        //         case 'tab';
-        //             break;
-        //         default:
-        //             if ( !empty( $k[ 'validate' ] ) && $setting_id == $option_page ) {
-        //                 $validation_rules = explode( ',', $k[ 'validate' ] );
+        foreach ( $seed_csp4_options as $k ) {
+            switch ( $k[ 'type' ] ) {
+                case 'menu':
+                case 'setting':
+                    if(isset($k['id']))
+                        $setting_id = $k['id'];
+                case 'section':
+                case 'tab';
+                    break;
+                default:
+                    if ( !empty( $k[ 'validate' ] ) && $setting_id == $option_page ) {
+                        $validation_rules = explode( ',', $k[ 'validate' ] );
 
-        //                 foreach ( $validation_rules as $v ) {
-        //                     $path = SEED_CSP4_PLUGIN_PATH . 'framework/validations/' . $v . '.php';
-        //                     if ( file_exists( $path ) ) {
-        //                         // Defaults Values
-        //                         $is_valid  = true;
-        //                         $error_msg = '';
+                        foreach ( $validation_rules as $v ) {
+                            $path = SEED_CSP4_PLUGIN_PATH . 'framework/validations/' . $v . '.php';
+                            if ( file_exists( $path ) ) {
+                                // Defaults Values
+                                $is_valid  = true;
+                                $error_msg = '';
 
-        //                         // Test Validation
-        //                         include( $path );
+                                // Test Validation
+                                include( $path );
                                 
-        //                         // Is it valid?
-        //                         if ( $is_valid === false ) {
-        //                             add_settings_error( $k[ 'id' ], 'seedprod_error', $error_msg, 'error' );
-        //                             // Unset invalids
-        //                             unset( $input[ $k[ 'id' ] ] );
-        //                         }
+                                // Is it valid?
+                                if ( $is_valid === false ) {
+                                    add_settings_error( $k[ 'id' ], 'seedprod_error', $error_msg, 'error' );
+                                    // Unset invalids
+                                    unset( $input[ $k[ 'id' ] ] );
+                                }
                                 
-        //                     }
-        //                 } //end foreach
+                            }
+                        } //end foreach
                         
-        //             }
-        //     }
-        // }
-
-        $current_option = get_option('seed_csp4_settings');
-
-        $input = array_merge($current_option,$input);
+                    }
+            }
+        }
         
         return $input;
     }

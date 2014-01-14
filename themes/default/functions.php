@@ -1,8 +1,8 @@
 <?php
 // Template Tags
 function seed_csp4_title(){
-	global $seed_csp4_settings;
-	$o = $seed_csp4_settings;
+	global $seed_csp4;
+	$o = seed_csp4_get_settings();
 	extract($o);
 
 	$title = '';
@@ -17,8 +17,8 @@ function seed_csp4_title(){
 
 
 function seed_csp4_metadescription(){
-	global $seed_csp4_settings;
-	$o = $seed_csp4_settings;
+	global $seed_csp4;
+	$o = seed_csp4_get_settings();
 	extract($o);
 	if(empty($seo_description)){
 		$seo_description = get_bloginfo( 'description', 'display' );
@@ -38,8 +38,8 @@ function seed_csp4_privacy(){
 }
 
 function seed_csp4_favicon(){
-	global $seed_csp4_settings;
-	$o = $seed_csp4_settings;
+	global $seed_csp4;
+	$o = seed_csp4_get_settings();
 	extract($o);
 	$output = '';
 	if(!empty($favicon)){
@@ -50,8 +50,8 @@ function seed_csp4_favicon(){
 }
 
 function seed_csp4_customcss(){
-	global $seed_csp4_settings;
-	$o = $seed_csp4_settings;
+	global $seed_csp4;
+	$o = seed_csp4_get_settings();
 	extract($o);
 	$output = '';
 	if(!empty($custom_css)){
@@ -61,21 +61,21 @@ function seed_csp4_customcss(){
 }
 
 function seed_csp4_head(){
-	require_once(SEED_CSP4_PLUGIN_PATH.'libraries/seed_csp4_lessc.inc.php');
-	global $seed_csp4_settings;
-	$o = $seed_csp4_settings;
+	require_once(SEED_CSP4_PLUGIN_PATH.'lib/seed_csp4_lessc.inc.php');
+	global $seed_csp4;
+	$o = seed_csp4_get_settings();
 	extract($o);
 
 	$output = "";
 
 	$output .= "<!-- Bootstrap and default Style -->\n";
-	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/bootstrap/css/bootstrap.min.css">'."\n";
+	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/css/bootstrap.min.css">'."\n";
 	if(!empty($enable_responsiveness)){
-	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/bootstrap/css/bootstrap-responsive.min.css">'."\n";
+	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/css/bootstrap-responsive.min.css">'."\n";
 	}
-	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/style.css">'."\n";
+	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/style.css">'."\n";
 	if(is_rtl()){
-		$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'templates/default/rtl.css">'."\n";
+		$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/rtl.css">'."\n";
 	}
 	$output .= '<style type="text/css">'."\n";
 	$output .= '/* calculated styles */'."\n";
@@ -275,13 +275,13 @@ function seed_csp4_head(){
 	if(empty($enable_wp_head_footer)){
 	$output .= '<script src="'.$include_url.'js/jquery/jquery.js"></script>'."\n";
 	}
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/bootstrap/js/bootstrap.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/js/bootstrap.js"></script>'."\n";
 
 	if(!empty($enable_fitvidjs)){		
 		$output .= "<!-- FitVid -->\n";
-		$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/jquery.fitvids.js"></script>'."\n";
+		$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/jquery.fitvids.js"></script>'."\n";
 	}
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/script.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/script.js"></script>'."\n";
 
 
 
@@ -312,7 +312,7 @@ function seed_csp4_head(){
 
 
   	$output .= "<!-- Modernizr -->\n";
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/modernizr.min.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/modernizr.min.js"></script>'."\n";
 
 
 	return $output;
@@ -324,14 +324,14 @@ function seed_csp4_footer(){
 	if(!empty($seed_csp4_post_result['post']) && $seed_csp4_post_result['post'] == 'true' && $seed_csp4_post_result['status'] == '200'){
 		$is_post = true;
 	}
-	$o = $seed_csp4_settings;
+	$o = seed_csp4_get_settings();
 	extract($o);
 
 	$output = '';
 
 	$output .= "<!-- Belatedpng -->\n";
 	$output .= "<!--[if lt IE 7 ]>\n";
-	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'templates/default/js/dd_belatedpng.js"></script>'."\n";
+	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/dd_belatedpng.js"></script>'."\n";
 	$output .= "<script>DD_belatedPNG.fix('img, .png_bg');</script>\n";
 	$output .= "<![endif]-->\n";
 
@@ -376,8 +376,8 @@ function seed_csp4_footer(){
 }
 
 function seed_csp4_logo(){
-	global $seed_csp4_settings;
-	$o = $seed_csp4_settings;
+	global $seed_csp4;
+	$o = seed_csp4_get_settings();
 	extract($o);
 	$output = "";
 	if(!empty($logo)){
@@ -387,10 +387,10 @@ function seed_csp4_logo(){
 }
 
 function seed_csp4_headline(){
-	global $seed_csp4_settings,$post;
+	global $seed_csp4,$post;
 
 	// get settings
-	$o = $seed_csp4_settings;
+	$o = seed_csp4_get_settings();
 	extract($o);
 	$output = "";
 	$dump = "";
@@ -411,7 +411,7 @@ function seed_csp4_headline(){
 
 function seed_csp4_description(){
 	global $seed_csp4,$post;
-	$o = $seed_csp4_settings;
+	$o = seed_csp4_get_settings();
 
 	$csp4_description = $o['description'];
 
@@ -440,8 +440,8 @@ function seed_csp4_description(){
 
 
 function seed_csp4_credit(){
-	global $seed_csp4_settings;
-	$o = $seed_csp4_settings;
+	global $seed_csp4;
+	$o = seed_csp4_get_settings();
 	extract($o);
 	$output = "";
 	

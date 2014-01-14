@@ -10,13 +10,9 @@
 /**
  * Config Settings
  */
-
-    function hitme( )
-    {
-        //var_dump('hit');
-    }
 function seed_csp4_get_options(){
     
+    global $seed_csp4_options;
 
     /**
      * Create new menus
@@ -30,21 +26,19 @@ function seed_csp4_get_options(){
         "layout" => "2-col" 
     );
 
-    $seed_csp4_options[ ] = array(
-        "type" => "setting",
-        "id" => "seed_csp4_settings",
-    );
-
-
-    $seed_csp4_options[ ] = array(
-        "type" => "tab",
-        "id" => "content",
-        "label" => __( "Content", 'coming-soon' ),
-    );
-
     /**
      * Settings Tab
      */
+    $seed_csp4_options[ ] = array(
+        "type" => "tab",
+        "id" => "seed_csp4_tab_1",
+        "label" => __( "Settings", 'coming-soon' ),
+    );
+
+    $seed_csp4_options[ ] = array(
+        "type" => "setting",
+        "id" => "seed_csp4_settings_1",
+    );
 
     $seed_csp4_options[ ] = array(
         "type" => "section",
@@ -155,8 +149,13 @@ function seed_csp4_get_options(){
      */
     $seed_csp4_options[ ] = array(
         "type" => "tab",
-        "id" => "design",
+        "id" => "seed_csp4_tab_2",
         "label" => __( "Design", 'coming-soon' ) 
+    );
+
+    $seed_csp4_options[ ] = array(
+        "type" => "setting",
+        "id" => "seed_csp4_settings_2" 
     );
 
 
@@ -311,8 +310,13 @@ function seed_csp4_get_options(){
      */
     $seed_csp4_options[ ] = array(
         "type" => "tab",
-        "id" => "advanced",
+        "id" => "seed_csp4_tab_4",
         "label" => __( "Advanced", 'coming-soon' ) 
+    );
+
+    $seed_csp4_options[ ] = array(
+        "type" => "setting",
+        "id" => "seed_csp4_settings_4" 
     );
 
 
