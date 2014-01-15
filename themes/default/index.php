@@ -11,13 +11,14 @@
 		{CustomCSS}
 	</head>
 <body>
-
+<div class="row">
+	<div class="col-md-12">
 <div id="seed-csp4-content" class="well">
 	{Logo}
 	{Headline}
 	{Description}
 </div><!-- / #seed-csp4-content -->
-
+</div></div>
 {Credit}
 
 {Footer}

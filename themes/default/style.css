@@ -9,6 +9,11 @@ body{
 	margin:0 auto;
 }
 
+#seed-csp4-content img{
+    max-width: 100%;
+    height: auto;
+}
+
 #seed-csp4-image{
 	margin-bottom:20px;
 }

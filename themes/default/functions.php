@@ -109,6 +109,12 @@ function seed_csp4_head() {
 			<?php endif; ?>
 	}
 
+	<?php if ( !empty( $max_width ) ):?>
+	#seed-csp4-content{
+    	max-width: <?php echo intval($max_width);?>px;
+	}
+	<?php endif;?>
+
     /* Text Styles */
     <?php if ( !empty( $text_font ) ):?>
 	    .seed-csp4 body{

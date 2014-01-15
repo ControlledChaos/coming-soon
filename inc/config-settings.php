@@ -240,6 +240,31 @@ function seed_csp4_get_options(){
         )
     );
 
+    // Background
+    $seed_csp4_options[ ] = array(
+        "type" => "section",
+        "id" => "seed_csp4_section_well",
+        "label" => __( "Content", 'coming-soon' ) 
+    );
+
+    $seed_csp4_options[ ] = array(
+        "type" => "textbox",
+        "id" => "max_width",
+        "class" => "text-small",
+        "label" => __( "Max Width", 'coming-soon' ),
+        "desc" => __("By default the max width of the content is set to 600px. Enter a number value. Example: 900", 'coming-soon'),    );
+
+    $seed_csp4_options[ ] = array(
+        "type" => "checkbox",
+        "id" => "enable_well",
+        "label" => __( "Enable Well", 'coming-soon' ),
+        "desc" => __("This will wrap your content in a box.", 'coming-soon'),
+        "option_values" => array(
+             '1' => __( 'Yes', 'coming-soon' ),
+        ), 
+    );
+
+
 
     // Text
     $seed_csp4_options[ ] = array(
