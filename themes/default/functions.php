@@ -71,9 +71,6 @@ function seed_csp4_head() {
 
 	$output .= "<!-- Bootstrap and default Style -->\n";
 	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/css/bootstrap.min.css">'."\n";
-	if ( !empty( $enable_responsiveness ) ) {
-		$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/css/bootstrap-responsive.min.css">'."\n";
-	}
 	$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/style.css">'."\n";
 	if ( is_rtl() ) {
 		$output .= '<link rel="stylesheet" href="'.SEED_CSP4_PLUGIN_URL.'themes/default/rtl.css">'."\n";
@@ -103,7 +100,7 @@ function seed_csp4_head() {
         	background: <?php echo $bg_color;?>;
 		<?php endif; ?>
     }
-    body{
+    .seed-csp4 body{
     	height:100%;
 			<?php if ( !empty( $bg_effect ) ) : ?>
 				background: transparent url('<?php echo plugins_url( 'images/bg-'.$bg_effect.'.png', __FILE__ ) ; ?>') repeat;
@@ -114,13 +111,13 @@ function seed_csp4_head() {
 
     /* Text Styles */
     <?php if ( !empty( $text_font ) ):?>
-	    body{
+	    .seed-csp4 body{
 	        font-family: <?php echo SEED_CSP4::get_font_family($text_font); ?>
 	    }
     <?php endif;?>
 
     <?php if ( !empty( $text_color ) ) { ?>
-		body{
+		.seed-csp4 body{
 			color:<?php echo $text_color;?>;
 		}
     <?php } ?>
@@ -129,14 +126,14 @@ function seed_csp4_head() {
 
 
     <?php if ( !empty( $headline_color ) ) { ?>
-		h1, h2, h3, h4, h5, h6{
+		.seed-csp4 h1, .seed-csp4 h2, .seed-csp4 h3, .seed-csp4 h4, .seed-csp4 h5, .seed-csp4 h6{
 			color:<?php echo $headline_color;?>;
 		}
     <?php }?>
 
 
     <?php if ( !empty( $link_color ) ) { ?>
-		a, a:visited, a:hover, a:active{
+		.seed-csp4 a, .seed-csp4 a:visited, .seed-csp4 a:hover, .seed-csp4 a:active{
 			color:<?php echo $link_color;?>;
 		}
 
@@ -161,10 +158,6 @@ function seed_csp4_head() {
 	}
 	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/bootstrap/js/bootstrap.js"></script>'."\n";
 
-	if ( !empty( $enable_fitvidjs ) ) {
-		$output .= "<!-- FitVid -->\n";
-		$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/jquery.fitvids.js"></script>'."\n";
-	}
 	$output .= '<script src="'.SEED_CSP4_PLUGIN_URL.'themes/default/js/script.js"></script>'."\n";
 
 
