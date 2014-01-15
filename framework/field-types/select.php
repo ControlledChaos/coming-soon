@@ -13,7 +13,10 @@ foreach ( $option_values as $k => $v ) {
 		}
 		echo '</optgroup>';
 	}else{
-    	echo "<option value='$k' " . selected( $options[ $id ], $k, false ) . ">$v</option>";
+			if(!isset($options[ $id ])){
+				$options[ $id ] = '';
+			}
+    		echo "<option value='$k' " . selected( $options[ $id ], $k, false ) . ">$v</option>";
 	}
 }
 echo "</select> ";

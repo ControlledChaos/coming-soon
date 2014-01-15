@@ -70,6 +70,11 @@ class SEED_CSP4{
     function admin_bar_menu($str){
         global $seed_csp4_settings,$wp_admin_bar;
         extract($seed_csp4_settings);
+
+        if(!isset($status)){
+            return false;
+        }
+
         $msg = '';
         if($status == '1'){
         	$msg = __('Coming Soon Mode Active','coming-soon');
@@ -134,6 +139,12 @@ class SEED_CSP4{
     function render_comingsoon_page() {
 
     	extract(seed_csp4_get_settings());
+
+        if(!isset($status)){
+            $err =  new WP_Error('error', __("Please enter your settings.", 'coming-soon'));
+            echo $err->get_error_message();
+            exit();
+        }
 
 
         if(empty($_GET['cs_preview'])){

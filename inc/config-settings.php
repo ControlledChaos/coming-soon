@@ -98,7 +98,7 @@ function seed_csp4_get_options(){
         "type" => "wpeditor",
         "id" => "description",
         "label" => __( "Description", 'coming-soon' ),
-        "desc" => __( "Tell the visitor what to expect from your site. Also supports WordPress shortcodes and <a href='http://codex.wordpress.org/Embeds' target='_target'>video embeds</a>.", 'coming-soon' ),
+        "desc" => __( "Tell the visitor what to expect from your site.", 'coming-soon' ),
         "class" => "large-text" 
     );
 

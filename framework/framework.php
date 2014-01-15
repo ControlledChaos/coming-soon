@@ -100,6 +100,7 @@ class SEED_CSP4_ADMIN
         wp_enqueue_style( 'media-upload' );
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_style( 'seed_csp4-framework-css', SEED_CSP4_PLUGIN_URL . 'framework/settings-style.css', false, $this->plugin_version );
+        wp_enqueue_style( 'font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', false, $this->plugin_version );
     }
     
     /**
@@ -175,7 +176,7 @@ class SEED_CSP4_ADMIN
             }
             echo '<a class="nav-tab seed_csp4-preview thickbox-preview" href="'.home_url().'?cs_preview=true&TB_iframe=true&width=640&height=632" title="'.__('&larr; Close Window','coming-soon').'">'.__('Live Preview','coming-soon').'</a>';
             if(defined('SEED_CSP_API_KEY') === false){
-                echo '<a class="nav-tab seed_csp4-support" href="http://www.seedprod.com/support/" target="_blank" style="float:right;">'.__('Support','coming-soon').'</a>';
+                echo '<a class="nav-tab seed_csp4-support" style="color: #8a6d3b;background-color: #fcf8e3;border-color: #faebcc;float:right" href="http://www.seedprod.com/features/?utm_source=coming-soon-plugin&utm_medium=banner&utm_campaign=coming-soon-link-in-plugin" target="_blank"><i class="fa fa-star"></i> '.__('Upgrade to the Pro Version','coming-soon').'</a>';
             }
             echo '</h2>';
 
@@ -232,7 +233,7 @@ class SEED_CSP4_ADMIN
                     <p>
                     <!-- <input name="submit" type="submit" value="<?php _e( 'Save All Changes', 'coming-soon' ); ?>" class="button-primary"/> -->
                     <?php if(!empty($_GET['tab']) && $_GET['tab'] != 'seed_csp4_tab_3') { ?>
-                    <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
+                    <!-- <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>     -->
                     <?php } ?>
                     </p>
                             <?php
@@ -280,7 +281,7 @@ class SEED_CSP4_ADMIN
                     <?php if($show_submit): ?>
                     <p>
                     <!-- <input name="submit" type="submit" value="<?php _e( 'Save All Changes', 'coming-soon' ); ?>" class="button-primary"/> -->
-                    <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/>    
+                    <!-- <input id="reset" name="reset" type="submit" value="<?php _e( 'Reset Settings', 'coming-soon' ); ?>" class="button-secondary"/> -->    
                     </p>
                     <?php endif; ?>
                     </form> 
