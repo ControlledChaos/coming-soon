@@ -97,7 +97,7 @@ function seed_csp4_get_options(){
     $seed_csp4_options[ ] = array(
         "type" => "wpeditor",
         "id" => "description",
-        "label" => __( "Description", 'coming-soon' ),
+        "label" => __( "Message", 'coming-soon' ),
         "desc" => __( "Tell the visitor what to expect from your site.", 'coming-soon' ),
         "class" => "large-text" 
     );

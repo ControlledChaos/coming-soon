@@ -11,18 +11,14 @@
 		{CustomCSS}
 	</head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="span10 offset1">
-				<div id="csp4-content">
-					{Logo}
-					{Headline}
-					{Description}
-				</div><!-- end of #csp4-content -->
-			</div><!--! end of .span8 -->
-		</div> <!--! end of .row -->
-	</div> <!--! end of .container -->
-	{Credit}
+
+<div id="seed-csp4-content" class="well">
+	{Logo}
+	{Headline}
+	{Description}
+</div><!-- / #seed-csp4-content -->
+
+{Credit}
 
 {Footer}
 </body>

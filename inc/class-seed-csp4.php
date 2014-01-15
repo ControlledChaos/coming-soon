@@ -109,7 +109,7 @@ class SEED_CSP4{
      /**
      * Get Font Family
      */
-    function get_font_family($font){
+    public static function get_font_family($font){
         $fonts                    = array();
         $fonts['_arial']          = 'Helvetica, Arial, sans-serif';
         $fonts['_arial_black']    = 'Arial Black, Arial Black, Gadget, sans-serif';

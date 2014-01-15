@@ -201,7 +201,7 @@ function seed_csp4_logo() {
 	$output = '';
 
 	if ( !empty( $logo ) ) {
-		$output .= "<img id='csp4-image' src='$logo'>";
+		$output .= "<img id='seed-csp4-image' src='$logo'>";
 	}
 
 	return  $output;
@@ -214,7 +214,7 @@ function seed_csp4_headline() {
 	$output = '';
 
 	if ( !empty( $headline ) ) {
-		$output .= '<h1 id="csp4-headline">'.$headline.'</h1>';
+		$output .= '<h1 id="seed-csp4-headline">'.$headline.'</h1>';
 	}
 
 	return  $output;
@@ -227,7 +227,7 @@ function seed_csp4_description() {
 	$output = '';
 
 	if ( !empty( $description ) ) {
-		$output .= '<div id="csp4-description">'.$description.'</div>';
+		$output .= '<div id="seed-csp4-description">'.$description.'</div>';
 	}
 
 	return  $output;
@@ -240,7 +240,7 @@ function seed_csp4_credit() {
 	$output = '';
 
 	if ( !empty( $footer_credit_txt ) ) {
-		$output = '<div id="csp4-credit">';
+		$output = '<div id="seed-csp4-credit">';
 		$output .= '<a target="_blank" href="'.esc_url( $footer_credit_link ).'">'.esc_html( $footer_credit_txt ).'</a>';
 		$output .= '</div>';
 	}
