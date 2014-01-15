@@ -102,6 +102,14 @@ function seed_csp4_get_options(){
         "class" => "large-text" 
     );
 
+     $seed_csp4_options[ ] = array( "type" => "radio",
+        "id" => "footer_credit",
+        "label" => __("Powered By SeedProd", 'ultimate-coming-soon-page'),
+        "option_values" => array('0'=>__('Nope - Got No Love', 'coming-soon'),'1'=>__('Yep - I Love You Man', 'coming-soon')),
+        "desc" => __("Can we show a <strong>cool stylish</strong> footer credit at the bottom the page.", 'coming-soon'),
+        "default_value" => "0",
+    );  
+
 
     // Header
     $seed_csp4_options[ ] = array(

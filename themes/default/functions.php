@@ -239,9 +239,9 @@ function seed_csp4_credit() {
 
 	$output = '';
 
-	if ( !empty( $footer_credit_txt ) ) {
+	if ( !empty( $footer_credit ) ) {
 		$output = '<div id="seed-csp4-credit">';
-		$output .= '<a target="_blank" href="'.esc_url( $footer_credit_link ).'">'.esc_html( $footer_credit_txt ).'</a>';
+		$output .= '<a target="_blank" href="http://www.seedprod.com/?utm_source=coming-soon-credit-link&utm_medium=banner&utm_campaign=coming-soon-plugin-credit-link"><img src="'.plugins_url('coming-soon',dirname('.')).'/themes/default/images/seedprod-credit.png"></a>';
 		$output .= '</div>';
 	}
 

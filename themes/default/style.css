@@ -1,13 +1,12 @@
 /* Styles */
 body{
 	text-align:center;
-	padding:0 20px;	
+	padding:60px 20px 0;	
 }
 
 #seed-csp4-content{
 	max-width:800px;
-	margin:60px auto;
-
+	margin:0 auto;
 }
 
 #seed-csp4-image{
@@ -29,10 +28,10 @@ body{
 	position: fixed;
 	bottom:0;
 	right:20px;
-	/*background-color: #000;
+	background-color: #000;
 	background-color: rgba(0, 0, 0, 0.70);
 	padding:1px 5px 2px;
-	border-radius: 3px 3px 0px 0px; */
+	border-radius: 3px 3px 0px 0px;
 }
 
 .placeholder { color: #aaa; }
