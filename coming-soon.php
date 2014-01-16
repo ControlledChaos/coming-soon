@@ -41,6 +41,10 @@ add_action('plugins_loaded', 'seed_csp4_load_textdomain');
  * @since 0.1.0
  */
 function seed_csp4_activation(){
+	require_once( 'inc/default-settings.php' );
+	add_option('seed_csp4_settings_content',unserialize($seed_csp4_settings_deafults['seed_csp4_settings_content']));
+	add_option('seed_csp4_settings_design',unserialize($seed_csp4_settings_deafults['seed_csp4_settings_design']));
+	add_option('seed_csp4_settings_advanced',unserialize($seed_csp4_settings_deafults['seed_csp4_settings_advanced']));
 }
 register_activation_hook( __FILE__, 'seed_csp4_activation' );
 
