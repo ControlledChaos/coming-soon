@@ -115,9 +115,25 @@ function seed_csp4_head() {
 	}
 	<?php endif;?>
 
+	<?php if ( !empty( $enable_well ) ):?>
+	#seed-csp4-content{
+		min-height: 20px;
+		padding: 19px;
+		background-color: #f5f5f5;
+		border: 1px solid #e3e3e3;
+		border-radius: 4px;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+	}
+	<?php endif;?>
+
     /* Text Styles */
     <?php if ( !empty( $text_font ) ):?>
 	    .seed-csp4 body{
+	        font-family: <?php echo SEED_CSP4::get_font_family($text_font); ?>
+	    }
+
+	    .seed-csp4 h1, .seed-csp4 h2, .seed-csp4 h3, .seed-csp4 h4, .seed-csp4 h5, .seed-csp4 h6{
 	        font-family: <?php echo SEED_CSP4::get_font_family($text_font); ?>
 	    }
     <?php endif;?>
@@ -191,6 +207,24 @@ function seed_csp4_footer() {
 	extract( $o );
 
 	$output = '';
+
+
+	if(!empty($bg_cover)){
+		$output .= '<!--[if lt IE 9]>
+		<script>
+		jQuery(document).ready(function($){';
+
+	
+		$output .= '$.supersized({';
+		$output .= "slides:[ {image : '$bg_image'} ]";
+		$output .= '});';
+	
+
+		$output .= '});
+		</script>
+		<![endif]-->';
+	}
+
 
 	if ( !empty( $footer_scripts ) ) {
 		$output .= "<!-- Footer Scripts -->\n";

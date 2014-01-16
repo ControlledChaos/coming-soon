@@ -13,7 +13,7 @@
 <body>
 <div class="row">
 	<div class="col-md-12">
-<div id="seed-csp4-content" class="well">
+<div id="seed-csp4-content">
 	{Logo}
 	{Headline}
 	{Description}

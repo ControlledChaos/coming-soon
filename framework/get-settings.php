@@ -2,7 +2,7 @@
 function seed_csp4_get_settings(){
     $s1 = get_option('seed_csp4_settings_content');
     $s2 = get_option('seed_csp4_settings_design');
-    $s4 = get_option('seed_csp4_settings_advanced');
+    $s3 = get_option('seed_csp4_settings_advanced');
 
     if(empty($s1))
         $s1 = array();
