@@ -96,9 +96,11 @@ function seed_csp4_head() {
 			<?php else: ?>
 				background: <?php echo $bg_color;?> url('<?php echo $bg_image; ?>') <?php echo $bg_repeat;?> <?php echo $bg_position;?> <?php echo $bg_attahcment;?>;
 			<?php endif ?>
-        <?php else: ?>
+        <?php else: 
+              if(!empty($bg_color)):
+     	?>
         	background: <?php echo $bg_color;?>;
-		<?php endif; ?>
+		<?php endif;endif; ?>
     }
     .seed-csp4 body{
     	height:100%;
@@ -122,8 +124,6 @@ function seed_csp4_head() {
 		background-color: #f5f5f5;
 		border: 1px solid #e3e3e3;
 		border-radius: 4px;
-		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-		box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 	}
 	<?php endif;?>
 
@@ -144,7 +144,9 @@ function seed_csp4_head() {
 		}
     <?php } ?>
 
+    <?php if ( !empty( $link_color ) ) { ?>
     <?php if ( empty( $headline_color ) ) { $headline_color = $link_color; }?>
+    <?php } ?>
 
 
     <?php if ( !empty( $headline_color ) ) { ?>

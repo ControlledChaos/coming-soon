@@ -175,7 +175,7 @@ function seed_csp4_get_options(){
         "type" => "color",
         "id" => "bg_color",
         "label" => __( "Background Color", 'coming-soon' ),
-        "default_value" => "#ffffff",
+        "default_value" => "#fafafa",
         "validate" => 'color',
         "desc" => __( "Choose between having a solid color background or uploading an image. By default images will cover the entire background.", 'coming-soon' ) 
     );
@@ -195,6 +195,7 @@ function seed_csp4_get_options(){
         "option_values" => array(
              '1' => __( 'Yes', 'coming-soon' ),
         ), 
+        "default" => "1",
     );
 
     $seed_csp4_options[ ] = array(
@@ -252,7 +253,7 @@ function seed_csp4_get_options(){
         "id" => "max_width",
         "class" => "text-small",
         "label" => __( "Max Width", 'coming-soon' ),
-        "desc" => __("By default the max width of the content is set to 600px. Enter a number value. Example: 900", 'coming-soon'),    );
+        "desc" => __("By default the max width of the content is set to 600px. Enter a number value if you need it bigger. Example: 900", 'coming-soon'),    );
 
     $seed_csp4_options[ ] = array(
         "type" => "checkbox",
@@ -277,7 +278,7 @@ function seed_csp4_get_options(){
         "type" => "color",
         "id" => "text_color",
         "label" => __( "Text Color", 'coming-soon' ),
-        "default_value" => "#ffffff",
+        "default_value" => "#666666",
         "validate" => 'required,color',
     );
 
@@ -285,7 +286,7 @@ function seed_csp4_get_options(){
         "type" => "color",
         "id" => "link_color",
         "label" => __( "Link Color", 'coming-soon' ),
-        "default_value" => "#ffffff",
+        "default_value" => "#27AE60",
         "validate" => 'required,color',
     );
 
@@ -294,6 +295,7 @@ function seed_csp4_get_options(){
         "id" => "headline_color",
         "label" => __( "Headline Color", 'coming-soon' ),
         "validate" => 'color',
+        "default_value" => "#444444",
         "desc" => __('If no Headline Color is chosen then the Link Color will be used. ','coming-soon'),
     );
 
