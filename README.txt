@@ -60,10 +60,9 @@ This is always a caching issue. Go to the caching plugin's setting page and clea
 == Screenshots ==
 
 1. Coming Soon Page Example
-2. Coming Soon Page Example
-2. Mainten Page Example
-2. Content Page
-2. Design Page
+2. Maintenance Mode Example
+3. Content Page
+4. Design Page
 
 
 == Changelog ==
